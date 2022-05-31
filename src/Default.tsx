@@ -23,7 +23,7 @@ function splitPropsInCSSAndAttributes(props: DefaultProps): [CSSProps, HAttribut
   const cssProps: CSSProps = {};
   const attributeProps: HAttributes = {};
   for (const propKey of Object.keys(props)) {
-    if (globalAttributes.has(propKey) || globalEventHandlers.has(propKey)) {
+    if (globalAttributes.has(propKey) || globalEventHandlers.has(propKey) || propKey.startsWith('data') || propKey.startsWith('aria')) {
       // @ts-ignore
       attributeProps[propKey] = props[propKey];
     } else {
